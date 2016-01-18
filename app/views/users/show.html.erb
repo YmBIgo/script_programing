@@ -2,11 +2,11 @@
   <div class="user_profile">
     <h3>
       <strong>
-        <%= @user.family_name %><%= @user.first_name %>さん(<%= @user.age %>才/
+        <%= @user.family_name %><%= @user.first_name %>さん(<%= @user.age %>才/<%= @user.sex %>/
         <% if @user.has_gone_with == true %>
             リア充
           <% else %>
-            ボッチ
+            おひとりさま
           <% end %>)
       </strong>
     </h3>

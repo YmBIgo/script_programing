@@ -22,6 +22,9 @@ class UsersController < ApplicationController
     @user.update(update_params)
   end
 
+  def result
+  end
+
   private
 
   def full_profile_check
