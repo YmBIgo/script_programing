@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>MyDearChristmas</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container main_page text-center">
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+  </div>
+  <footer>
+      <hr>
+      <p class="text-center"><small>@2016 Kurihara Kazuya</small></p>
+  </footer>
+</body>
+</html>

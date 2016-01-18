@@ -1,0 +1,52 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.count-content{
+  color:green;
+}
+
+
+.main_page{
+  margin-top:70px;
+}
+
+.sign_inup_button_area{
+  border-radius:20px;
+  height:200px;
+  padding-top:92px;
+  font-size:20px;
+}
+
+.sign_inup_button_area:hover{
+  background: rgba(220,10,10,.2);
+}
+
+.sign_inup_page{
+  background: rgba(250,250,250,1);
+}
+
+.sign_inup_header_img{
+  position: relative;
+  width:100%;
+  min-height:700px;
+  background-image: asset-data-url("MerryChristmas.jpg");
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.count-content-inner-title{
+  padding:20px 0;
+}
+
+
+
+
+
+
+
+
+

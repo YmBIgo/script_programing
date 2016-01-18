@@ -1,0 +1,45 @@
+<div class="form-field">
+  <% unless @user.full_profile? %>
+    <h3>開始する前にプロフィールの編集を終了してください！</h3>
+  <% end %>
+  <h2><strong>プロフィールを編集する</strong></h2>
+      <%= form_for @user do |f| %>
+        <div class="form-items">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+              <%= f.label "苗字" %>
+              <%= f.text_field :family_name, :class => "form-control" %>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+              <%= f.label "名前" %>
+              <%= f.text_field :first_name, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+              <%= f.label "学年" %>
+              <%= f.number_field :grade, :class => "form-control", :placeholder => "学年を英数字で入力" %>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+              <%= f.label "年齢" %>
+              <%= f.number_field :age, :class => "form-control", :placeholder => "年齢を英数字で入力" %>
+            </div>
+          </div>
+          <div class="form-item">
+            <%= f.label "自己紹介" %>
+            <%= f.text_area :introduce_text, cols:"20", rows:"3", autofocus:"true", class:"form-control" %>
+          </div>
+          <br>
+          <div class="form-item">
+            <%= f.label "彼氏彼女はいますか？" %>
+            <%= f.check_box :has_gone_with %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "登録する", :class => "btn btn-primary form-item" %>
+        </div>
+      <% end %>
+      <% if @user.full_profile? %>
+        <%= link_to "トップに戻る", root_path, :class => "btn btn-primary form-item" %>
+      <% end %>
+</div>

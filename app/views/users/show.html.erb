@@ -1,0 +1,40 @@
+<div class="user_page">
+  <div class="user_profile">
+    <h3><strong><%= @user.family_name %><%= @user.first_name %>さん</strong></h3>
+    <br>
+    <div class="row user_text_field">
+      <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+        <p><%= @user.age %>才</p>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
+        <p>
+          <% if @user.has_gone_with == true %>
+            付き合っています
+          <% else %>
+            付き合っていません
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <h4><strong>自己紹介</strong></h4>
+    <div class="user_text_field text-left">
+      <p><%= simple_format(@user.introduce_text) %></p>
+    </div>
+    <hr>
+    <div class="message_area">
+      <% unless @messages.present? %>
+        <p><%= "#{@user.family_name}#{@user.first_name}" %>さんと連絡してみよう!</p>
+      <% else %>
+      <% end %>
+      <%= form_for @message do |f| %>
+          <div class="form-item">
+            <%= f.text_area :m_text, cols:"15", rows:"2", autofocus:"true", class:"form-control user_message_form" %>
+          </div>
+          <%= f.hidden_field :send_to, :value => @user.id %>
+          <div class="action">
+            <%= f.submit "送信する", :class => "btn btn-primary form-item" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
