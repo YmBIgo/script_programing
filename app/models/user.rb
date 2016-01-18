@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
   # association
   has_many :messages
 
+  validates :sex, length: {maximum: 3}
+
+  paginates_per 10
+
   def full_profile?
-    family_name? && first_name? && grade? && age? && introduce_text?
+    family_name? && first_name? && sex? && age? && introduce_text?
   end
 
 end

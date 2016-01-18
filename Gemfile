@@ -31,6 +31,9 @@ gem 'twitter-bootstrap-rails' # Bootstrapの本体
 # Devise
 gem 'devise'
 
+# Kaminari
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

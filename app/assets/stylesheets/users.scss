@@ -9,10 +9,26 @@
 .user_text_field{
   margin:0 10%;
   padding-top: 5px;
+  padding-left:25px;
+  padding-right:25px;
   border: 1px solid #a0a0a0
 }
 
 .user_message_form{
-  max-width:500px;
+  max-width: 83%;
   margin: 10px auto;
+}
+
+.user_message_area{
+  margin:0 10%;
+}
+
+.user_message_right_text_area{
+  background-color: rgba(230, 230, 230, 01);
+  padding:10px 30px;
+}
+
+.user_message_left_text_area{
+  background-color: rgba(230, 230, 230, 01);
+  padding:10px 30px;
 }

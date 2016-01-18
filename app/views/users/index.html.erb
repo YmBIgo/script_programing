@@ -1,2 +1,9 @@
 <div class="users_page">
+  <h2><strong>他のユーザーを検索する</strong></h2>
+  <hr>
+  <% @users.each do |u| %>
+    <h3 class="text-left"><strong><%= link_to "#{u.family_name} #{u.first_name}さん", user_path(u.id) %></strong></h3>
+    <hr>
+  <% end %>
+  <%= paginate @users %>
 </div>

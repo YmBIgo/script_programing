@@ -1,40 +1,64 @@
 <div class="user_page">
   <div class="user_profile">
-    <h3><strong><%= @user.family_name %><%= @user.first_name %>さん</strong></h3>
-    <br>
-    <div class="row user_text_field">
-      <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
-        <p><%= @user.age %>才</p>
-      </div>
-      <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
-        <p>
-          <% if @user.has_gone_with == true %>
-            付き合っています
+    <h3>
+      <strong>
+        <%= @user.family_name %><%= @user.first_name %>さん(<%= @user.age %>才/
+        <% if @user.has_gone_with == true %>
+            リア充
           <% else %>
-            付き合っていません
-          <% end %>
-        </p>
-      </div>
-    </div>
+            ボッチ
+          <% end %>)
+      </strong>
+    </h3>
     <h4><strong>自己紹介</strong></h4>
     <div class="user_text_field text-left">
       <p><%= simple_format(@user.introduce_text) %></p>
     </div>
+    <% if current_user.id == @user.id %>
+          <br>
+          <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), :class => "btn btn-primary" %>
+    <% end %>
+    <br>
     <hr>
-    <div class="message_area">
-      <% unless @messages.present? %>
-        <p><%= "#{@user.family_name}#{@user.first_name}" %>さんと連絡してみよう!</p>
-      <% else %>
-      <% end %>
-      <%= form_for @message do |f| %>
-          <div class="form-item">
-            <%= f.text_area :m_text, cols:"15", rows:"2", autofocus:"true", class:"form-control user_message_form" %>
-          </div>
-          <%= f.hidden_field :send_to, :value => @user.id %>
-          <div class="action">
-            <%= f.submit "送信する", :class => "btn btn-primary form-item" %>
-          </div>
+    <h3><strong>伝言板</strong></h3>
+    <div class="user_message_area">
+      <% @messages.each do |m| %>
+        <% if m.user_id == current_user.id %>
+          <p class="text-left user_message_left_text_area">
+            <strong>
+            <%= link_to "自分", user_path(m.user_id) %></strong>：<%= m.created_at %>
+            <br>
+            <%= m.m_text %>
+          </p>
+        <% else %>
+          <p class="text-right user_message_right_text_area">
+              <%= m.created_at %>：<strong><%= link_to "#{m.user.family_name}#{m.user.first_name}", user_path(m.user_id) %>
+            </strong>
+            <br>
+            <%= m.m_text %>
+          </p>
         <% end %>
+      <% end %>
+      <%= paginate @messages %>
+    </div>
+    <div class="message_area">
+        <% unless @messages.present? %>
+          <p>
+            <strong><%= "#{@user.family_name}#{@user.first_name}" %>さんと連絡してみよう!</strong>
+          </p>
+        <% else %>
+        <% end %>
+        <%= form_for @message do |f| %>
+            <div class="row user_message_form">
+              <div class="form-item col-xl-10 col-lg-10 col-sm-10 col-xs-10">
+                <%= f.text_area :m_text, cols:"15", rows:"2", autofocus:"true", class:"form-control" %>
+              </div>
+              <%= f.hidden_field :send_to, :value => @user.id %>
+              <div class="action col-xl-1 col-lg-1 col-sm-1 col-xs-1">
+                <%= f.submit "送信する", :class => "btn btn-primary form-item", :style => "margin-top:25px;" %>
+              </div>
+            </div>
+          <% end %>
     </div>
   </div>
 </div>

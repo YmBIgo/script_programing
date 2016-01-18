@@ -1,6 +1,6 @@
 <div class="form-field">
   <% unless @user.full_profile? %>
-    <h3>開始する前にプロフィールの編集を終了してください！</h3>
+    <h3><strong>＜注意＞開始する前にプロフィールの編集を終了してください！</strong></h3>
   <% end %>
   <h2><strong>プロフィールを編集する</strong></h2>
       <%= form_for @user do |f| %>
@@ -17,8 +17,8 @@
           </div>
           <div class="row">
             <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
-              <%= f.label "学年" %>
-              <%= f.number_field :grade, :class => "form-control", :placeholder => "学年を英数字で入力" %>
+              <%= f.label "性別" %>
+              <%= f.text_field :sex, :class => "form-control" %>
             </div>
             <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 form-item">
               <%= f.label "年齢" %>

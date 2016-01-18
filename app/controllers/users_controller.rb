@@ -4,11 +4,12 @@ class UsersController < ApplicationController
   before_action :full_profile_check,  only: [:index, :show]
 
   def index
+    @users = User.all.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @messages = @user.messages
+    @messages = Message.where("send_to = ?", params[:id]).page(params[:page])
     @message = Message.new
   end
 
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.require(:user).permit(:family_name, :first_name, :age, :grade, :has_gone_with, :introduce_text)
+    params.require(:user).permit(:family_name, :first_name, :age, :sex, :has_gone_with, :introduce_text)
   end
 
 end
