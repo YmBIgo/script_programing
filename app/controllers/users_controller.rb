@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :full_profile_check,  only: [:index, :show]
 
   def index
-    @users = User.all.page(params[:page])
+    @q     = User.search(params[:q])
+    @users = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -20,9 +21,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(update_params)
-  end
-
-  def result
   end
 
   private

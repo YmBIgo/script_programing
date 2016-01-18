@@ -34,6 +34,9 @@ gem 'devise'
 # Kaminari
 gem 'kaminari'
 
+# Search
+gem 'ransack'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

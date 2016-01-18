@@ -1,5 +1,29 @@
 <div class="users_page">
   <h2><strong>他のユーザーを検索する</strong></h2>
+  <%= search_form_for @q do |f| %>
+    <div class="row form-items">
+      <div class="col-xl-3 col-lg-3 col-sm-3 col-xs-3 form-item">
+        <%= f.label "年齢" %>
+        <%= f.search_field :age_cont, :class => "form-control" %>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-3 col-xs-3 form-item">
+        <%= f.label "苗字" %>
+        <%= f.search_field :family_name_cont, :class => "form-control" %>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-3 col-xs-3 form-item">
+        <%= f.label "名前" %>
+        <%= f.search_field :first_name_cont, :class => "form-control" %>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-3 col-xs-3 form-item">
+        <%= f.label "彼氏彼女" %>
+        <br>
+        <%= f.check_box :has_gone_with_eq, :class => "checkbox-inline" %>
+      </div>
+    </div>
+    <div class="action">
+      <%= f.submit "検索", :class => "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
   <hr>
   <% @users.each do |u| %>
     <h3 class="text-left"><strong><%= link_to "#{u.family_name} #{u.first_name}さん", user_path(u.id) %></strong></h3>
